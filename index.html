@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profilesty.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
+</head>
+<body>
+    <!-- 漢堡選單 -->
+    <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <div class="menu">
+        <div class="music">
+            <!-- 添加onclick事件處理器 -->
+            <a class="text" id="musicButton" onclick="toggleMusic()">Play Music</a>
+            <!-- 隱藏的audio元素 -->
+            <audio id="bgMusic" src="music/voyage - beyond [slowed  reverb].mp3"></audio>
+        </div>
+        <a class="text" href="index.html">Reset</a>
+    </div>
+    
+
+    <!-- 首頁區塊 -->
+    <div class="section">
+        <div class="content">
+            <img src="img/456.jpg" alt="個人照片" class="profile-image">
+            <h1 class="name">郭采玲</h1>
+            <div class="title">更新中，請稍後。</div>
+        </div>
+    </div>
+
+    <!-- 關於我區塊 -->
+    <div class="section">
+        <div class="content">
+            <h2>關於我</h2>
+            <p>/ 目前就讀 國立臺北科技大學 互動設計系 視覺傳達設計組 二年級 /</p>
+        </div>
+    </div>
+
+    <!-- 技能區塊 -->
+    <div class="section">
+        <div class="content">
+            <h2>專業技能</h2>
+            <div class="skills-container">
+                <div class="skill-item">HTML5</div>
+                <div class="skill-item">CSS3</div>
+                <div class="skill-item">JavaScript</div>
+                <div class="skill-item">Procreate</div>
+                <div class="skill-item">Adobe Illustrator</div>
+                <div class="skill-item">Adobe Photoshop</div>
+                <div class="skill-item">Sketch up</div>
+                <div class="skill-item">Arduino</div>
+                <div class="skill-item">Unity</div>
+                <div class="skill-item">Autocad</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 聯絡資訊區塊 -->
+    <div class="section">
+        <div class="content">
+            <h2>聯絡資訊</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>t112ac2019@ntut.org.tw</span>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>0989-058-910</span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>嘉義縣 義竹鄉</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 文章區塊 -->
+    <div class="section">
+        <div class="content blog-content">
+            <h2>大一上專案 - Play sure?Pressure?</h2>
+            <div class="blog-full">
+                <img src="img/正常.JPG" alt="文章圖片" class="blog-image-full">
+                <div class="blog-details">
+                    <span class="blog-date">2023/12/29</span>
+                    <div class="blog-text">
+                        <p>由李程睿、黃稜容、李麥冉、劉吉武、郭采玲製作，是一個關於...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="content blog-content">
+            <h2>大一下專案 - 尋跡</h2>
+            <div class="blog-full">
+                <img src="img/112-2.png" alt="文章圖片" class="blog-image-full">
+                <div class="blog-details">
+                    <span class="blog-date">2024/06/21</span>
+                    <div class="blog-text">
+                        <p>由莊佳晨、黃絢俞、蘇珮媛、劉吉武、郭采玲製作，是一個關於...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="content blog-content">
+            <h2>大二上專案 - 禾平共秤</h2>
+            <div class="blog-full">
+                <img src="img/113-1.png" alt="文章圖片" class="blog-image-full">
+                <div class="blog-details">
+                    <span class="blog-date">2025/01/07</span>
+                    <div class="blog-text">
+                        <p>由徐湘祺、黃絢俞、蘇珮媛、彭成民、郭采玲製作，是一個關於...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-to-top">
+        <div class="arrow">↑</div>
+        <div class="text">TOP</div>
+    </div>
+
+    <!-- 頁腳 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">關於我</h3>
+                <p>努力學習，成為斜槓。</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">快速連結</h3>
+                <ul class="footer-links">
+                    <li><a href="#about">關於我</a></li>
+                    <li><a href="#skills">技能</a></li>
+                    <li><a href="#blog">部落格</a></li>
+                    <li><a href="#contact">聯絡資訊</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">聯絡方式</h3>
+                <ul class="footer-links">
+                    <li>📧 t112ac2019@ntut.org.tw</li>
+                    <li>📱 0912-345-678</li>
+                    <li>📍 嘉義縣義竹鄉</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2024 Guo Cai Ling. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        let isPlaying = false;
+        const music = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicButton');
+        
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicBtn.textContent = 'Play Music';
+            } else {
+                music.play();
+                musicBtn.textContent = 'Pause Music';
+            }
+            isPlaying = !isPlaying;
+        }
+        </script>
+    <script src="protch.js"></script>
+    <script src="sketch.js"></script>
+    
+</body>
+</html>

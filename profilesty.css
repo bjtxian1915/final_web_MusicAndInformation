@@ -1,0 +1,378 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin-top: 200px;
+    font-family: 'Arial', sans-serif;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* 畫布置於背景 */
+  }
+.section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    position: relative;
+}
+
+.content {
+    width: 80%;
+    max-width: 1000px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    position: relative;
+    z-index: 1; /* 置於 canvas 上層 */
+    color: white; /* 文字顏色 */
+    min-height: 100vh;
+}
+
+.content.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.content.exit {
+    opacity: 0;
+    transform: translateY(-50px);
+}
+
+/* 個人資料樣式 */
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto 30px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+}
+
+.name {
+    font-size: 4em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.title {
+    font-size: 2em;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+/* 技能樣式 */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.skill-item {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 15px 30px;
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    font-size: 1.5em;
+}
+
+
+/* 聯絡資訊樣式 */
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.contact-item {
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+h2 {
+    font-size: 3.5em;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+p {
+    font-size: 1.5em;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .name { font-size: 3em; }
+    h2 { font-size: 2.5em; }
+    p { font-size: 1.2em; }
+    .skill-item { font-size: 1em; }
+    .contact-item { font-size: 1.2em; }
+}
+.blog-content {
+    width: 100%;
+    max-width: 1400px; /* 放大最大寬度 */
+}
+
+.blog-full {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px; /* 增加內距 */
+    backdrop-filter: blur(5px);
+    transform: scale(0.8) translateY(50px);
+    opacity: 0;
+    transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1); /* 使用更平滑的貝茲曲線 */
+}
+
+.blog-content.visible .blog-full {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+.blog-image-full {
+    width: 1000px;
+    height: 500px; /* 增加圖片高度 */
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 10px; /* 增加間距 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* 添加陰影效果 */
+}
+
+.blog-details {
+    padding: 30px 0;
+}
+
+.blog-date {
+    display: block;
+    color: #fff;
+    font-size: 1.3em; /* 放大字體 */
+    margin-bottom: 25px;
+}
+
+.blog-text {
+    font-size: 1.4em; /* 放大字體 */
+    line-height: 1.8;
+    color: #fff;
+}
+
+/* 添加懸停效果 */
+.blog-full:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+    .blog-full {
+        padding: 25px;
+    }
+    
+    .blog-image-full {
+        height: 300px;
+    }
+    
+    .blog-text {
+        font-size: 1.1em;
+    }
+    
+    .blog-date {
+        font-size: 1.1em;
+    }
+}
+
+/* 頁腳樣式 */
+footer {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 50px 0;
+    margin-top: 50px;
+}
+
+.footer-content {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    text-align: left;
+    color: #fff;
+}
+
+.footer-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.footer-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.footer-title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background: #fff;
+    transition: width 0.3s ease;
+}
+
+.footer-section:hover .footer-title::after {
+    width: 100px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    color: #fff;
+    font-size: 1.5em;
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-5px);
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: #fff;
+    transform: translateX(10px);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 30px;
+    margin-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #aaa;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* 新增響應式調整 */
+@media (max-width: 768px) {
+    .blog-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    color: #fff;
+    user-select: none;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+.back-to-top .arrow {
+    font-size: 20px;
+    margin-bottom: -5px;
+}
+
+.back-to-top .text {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+}
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* 置於最底層 */
+}
